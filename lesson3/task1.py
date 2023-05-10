@@ -3,10 +3,9 @@
 
 def modification(lst):
     # Здесь пишем код
-    kolichestvo = len(lst)
     pervii_element = lst[0]
-    lst[0] = lst[kolichestvo-1]
-    lst[kolichestvo-1] = pervii_element
+    lst[0] = lst[-1]
+    lst[-1] = pervii_element
     return lst
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
