@@ -11,9 +11,8 @@ def letter_stat(our_str):
     for j in range(len(our_str)):
         count = letters_dict.get(our_str[j])
         if count is None:
-            letters_dict[our_str[j]] = 1
-        else:
-            letters_dict[our_str[j]] = count + 1
+            count = 0
+        letters_dict[our_str[j]] = count + 1
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
