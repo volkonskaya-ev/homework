@@ -22,17 +22,23 @@ import unittest  # Не удалять
 # !!! Если закомментировать проверку, то тест все равно проходит
 class Trigon:
     def __init__(self, *triangle_sides):
-        n = len(triangle_sides)
-        if n != 3:
-            raise IndexError(f"Передано {n} аргументов, а ожидается 3")
-        try:
-            if triangle_sides[0] <= 0 or triangle_sides[1] <= 0 or triangle_sides[2] <= 0:
-                raise ValueError("Стороны должны быть положительными")
-        except TypeError:
+        if len(triangle_sides) != 3:
+            raise IndexError("Передано {} аргументов, а ожидается 3".format(len(triangle_sides)))
+        a = triangle_sides[0]
+        b = triangle_sides[1]
+        c = triangle_sides[2]
+
+        if not isinstance(a, int) \
+                or not isinstance(b, int) \
+                or not isinstance(c, int):
             raise TypeError("Стороны должны быть числами")
-        if triangle_sides[0]+triangle_sides[1] <= triangle_sides[2] \
-                or triangle_sides[0]+triangle_sides[2] <= triangle_sides[1] \
-                or triangle_sides[1]+triangle_sides[2] <= triangle_sides[0]:
+
+        if a <= 0 or b <= 0 or c <= 0:
+            raise ValueError("Стороны должны быть положительными")
+
+        if a + b <= c \
+                or a + c <= b \
+                or b + c <= a:
             raise Exception("Не треугольник")
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
